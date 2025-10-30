@@ -16,6 +16,7 @@ public class NotificationController {
 
     @PostMapping
     public NotificationResponse sendNotification(@RequestBody NotificationRequest notificationRequest) {
+        log.info("Sending notification request {}", notificationRequest);
         return notificationService.sendNotification(notificationRequest);
     }
 }

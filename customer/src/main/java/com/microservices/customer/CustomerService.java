@@ -28,8 +28,6 @@ public class CustomerService {
         customerRepository.saveAndFlush(customer);
 
         FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
-        log.info("fraud check for customer with id {}", customer.getId());
-
         assert fraudCheckResponse != null;
         if(fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("Customer with id: " + customer.getId() + " is a fraudster");
